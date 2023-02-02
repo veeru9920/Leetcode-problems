@@ -18,3 +18,66 @@ class Solution {
     }
 }
 
+//common prefix
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        if(strs.length==0) return "";
+        String prefix=strs[0];
+        for(int i=1;i<strs.length;i++){
+            while(strs[i].indexOf(prefix)!=0){
+                prefix=prefix.substring(0,prefix.length()-1);
+                if(prefix.isEmpty()) return "";
+            }
+        }
+        return prefix;
+    }
+}
+
+// remove duplicate elements
+
+class Solution {
+    public int removeDuplicates(int[] nums) {
+            int p = 0;
+        for(int i = 1 ; i < nums.length ; i++){
+            if(nums[p] != nums[i]){
+                nums[p+1] = nums[i];
+                p++;
+            }
+        }
+        return p + 1;
+        
+    }
+}
+
+//remove element
+
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int j=0;
+        for(int i=0;i<nums.length;i++){
+            if(val!=nums[i]){
+                int temp=nums[j];
+                nums[j]=nums[i];
+                nums[i]=temp;
+                j++;
+            }
+        }
+        return j;
+        
+    }
+}
+
+search in search position
+
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int l=nums.length;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==target) return i;
+            else if(target<nums[i])  return i;
+            
+        }
+        if(nums[l-1]<target) return l;
+        return l;
+    }
+}
